@@ -16,12 +16,12 @@
     width: 100vw;
 }
 
-#top-bcg {
+#bcg-top {
     background-color: green;
     height: 15%;
 }
 
-#bottom-bcg {
+#bcg-bottom {
     background-color: grey;
     height: 85%;
 }
@@ -42,7 +42,7 @@
     width: 30%;
     float: left;
     height: 100%;
-    background-color: #ffffff;
+    background-color: white;
 }
 
 #right-side {
@@ -68,14 +68,16 @@
 #l-search-chat {
     height: 50px;
     background-color: #e3dbd3;
+    border-bottom: 1px solid #d2d1d0;
 }
 
 #l-chat-container {
-    background-color: #ffffff;
+    background-color: white;
 }
 
 .l-chat {
     height: 72px;
+    border-bottom: 1px solid #d2d1d0;
 }
 
 .chat-active {
@@ -86,12 +88,39 @@
     height: 60px;
 }
 
-#r-msg-text {
+#r-conversation {
     background-image: url(images/background.png);
     background-repeat: repeat;
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 #r-input-bar {
-    height: 62px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #000;
+    height: 72px;
+    padding: 10px 20px;
+    font-size: 40px;
+}
+
+#r-input-bar input {
+    flex-grow: 1;
+    margin: 0 15px;
+    border-radius: 50px;
+}
+
+.msg-wrapper {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.msg-mine {
+    background-color: lightgreen;
+    float: right;
+}
+
+.msg-speaker {
+    background-color: white;
 }
