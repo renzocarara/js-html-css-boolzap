@@ -11,7 +11,7 @@
 }
 
 .template {
-    /* display: none; */
+    display: none;
 }
 
 #container {
@@ -93,6 +93,9 @@
 }
 
 #r-conversation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     background-image: url(images/background.png);
     background-repeat: repeat;
     flex-grow: 1;
@@ -116,7 +119,6 @@
 }
 
 .msg-wrapper {
-    display: inline-block;
     margin: 15px;
     padding: 10px;
     border-radius: 5px;
@@ -124,7 +126,7 @@
 
 .msg-mine {
     background-color: lightgreen;
-    float: right;
+    align-self: flex-end;
 }
 
 .msg-speaker {
