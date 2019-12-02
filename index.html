@@ -12,28 +12,72 @@
 
 <body>
     <div id="container">
+
         <div id="bcg-top"></div>
         <div id="bcg-bottom"></div>
+
         <div id="content" class="clearfix">
+
             <div id="left-side">
-                <div id="l-myself">myself
-                    <!-- <i class="fas fa-circle-notch"></i> -->
-                    <!-- <i class="fas fa-comment-alt"></i> -->
-                    <!-- <i class="fas fa-ellipsis-v"></i> -->
+
+                <div id="l-myself" class="rect clearfix">
+                    <img src="images/user4.png" alt="myself image">
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-circle-notch"></i>
                 </div>
-                <div id="l-set-notification">notification</div>
-                <div id="l-search-chat">searchbar</div>
-                <div class="l-chat chat-active">chat attiva</div>
+
+                <div id="l-set-notification" class="rect clearfix">
+                    <div class="rect-img"><i class="fas fa-bell-slash"></i></div>
+                    <div class="rect-text">
+                        <span>Ricevi notifiche di nuovi messaggi</span>
+                        <span>Attiva notifiche desktop<i class="fas fa-angle-right"></i></span>
+                    </div>
+                </div>
+
+                <div id="l-search-chat" class="rect"><input id="search-input" type="text" placeholder="Cerca o inizia una nuova chat"></div>
+
                 <div id="l-chat-container">
-                    <div class="l-chat">chat</div>
-                    <div class="l-chat">chat</div>
-                    <div class="l-chat">chat</div>
-                    <div class="l-chat">chat</div>
-                    <div class="l-chat">chat</div>
+                    <div class="l-chat rect chat-active">
+                        <div class="rect-img"><img src="images/user2.png" alt="user image"></div>
+                        <div class="rect-text">
+                            <span>Michele</span>
+                            <span>Ciao come stai?</span></div>
+                        <div class="rect-date">12:30</div>
+                    </div>
+                    <div class="l-chat rect">
+                        <div class="rect-img"><img src="images/user3.png" alt="user image"></div>
+                        <div class="rect-text">
+                            <span>Francesca</span>
+                            <span>Ciao come stai?</span></div>
+                        <div class="rect-date">12:30</div>
+                    </div>
+                    <div class="l-chat rect">
+                        <div class="rect-img"><img src="images/user5.png" alt="user image"></div>
+                        <div class="rect-text">
+                            <span>Antonio</span>
+                            <span>Ciao come stai?</span></div>
+                        <div class="rect-date">12:30</div>
+                    </div>
+                    <div class="l-chat rect">
+                        <div class="rect-img"><img src="images/user1.png" alt="user image"></div>
+                        <div class="rect-text">
+                            <span>Mario</span>
+                            <span>Ciao come stai?</span></div>
+                        <div class="rect-date">12:30</div>
+                    </div>
                 </div>
             </div>
+
             <div id="right-side">
-                <div id="r-myspeaker">myspeaker</div>
+
+                <div id="r-myspeaker" class="rect">
+                    <img src="images/user2.png" alt="myself image">
+                    <div class="speaker-text"><span>Michele</span><br><span>ultimo accesso oggi alle 15:30</span></div>
+                    <i class="fas fa-ellipsis-v"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-search"></i>
+                </div>
 
                 <div id="r-conversation">
                     <div class="msg-wrapper msg-mine">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</div>

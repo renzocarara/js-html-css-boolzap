@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: Helvetica, sans-serif;
+}
+
 .clearfix {
     content: '';
     display: table;
@@ -21,12 +25,12 @@
 }
 
 #bcg-top {
-    background-color: green;
+    background-color: teal;
     height: 15%;
 }
 
 #bcg-bottom {
-    background-color: grey;
+    background-color: lightgrey;
     height: 85%;
 }
 
@@ -49,6 +53,50 @@
     background-color: white;
 }
 
+.rect {
+    padding: 10px;
+}
+
+.rect-img {
+    float: left;
+}
+
+.rect-text {
+    float: left;
+    margin-left: 15px;
+}
+
+.rect-date {
+    float: right;
+}
+
+#l-myself {
+    background-color: #ededed;
+    border-right: 1px solid #d2d1d0;
+    height: 60px;
+}
+
+#l-myself img, #r-myspeaker img {
+    float: left;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#l-myself i, #r-myspeaker i {
+    float: right;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    color: gray;
+}
+
+.speaker-text {
+    float: left;
+    margin-left: 10px;
+}
+
 #right-side {
     display: flex;
     flex-direction: column;
@@ -58,25 +106,89 @@
     height: 100%;
 }
 
-#l-myself {
-    background-color: #ededed;
-    border-right: 1px solid #d2d1d0;
-    height: 60px;
-}
-
 #l-set-notification {
     height: 90px;
     background-color: #9de1fe;
 }
 
+#l-set-notification i {
+    padding: 12px 10px;
+    font-size: 20px;
+    color: #9de1fe;
+}
+
+#l-set-notification .rect-img {
+    display: inline-block;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: white;
+    margin-top: 15px;
+}
+
+#l-set-notification .rect-text {
+    margin-top: 24px;
+    cursor: pointer;
+}
+
+#l-set-notification .rect-text i {
+    color: gray;
+}
+
+#l-set-notification .rect-text span {
+    display: block;
+    line-height: 10px;
+}
+
+#l-set-notification .rect-text span:first-child {
+    display: block;
+    line-height: 1px;
+    color: #343738;
+    font-size: 16px;
+}
+
+#l-set-notification .rect-text span:last-child {
+    display: block;
+    line-height: 1px;
+    color: #404b4f;
+    font-size: 14px;
+}
+
+.l-chat .rect-text span:first-child {
+    display: block;
+    color: black;
+    font-size: 17px;
+}
+
+.l-chat .rect-text span:last-child {
+    display: block;
+    color: #454545;
+    font-size: 14px;
+}
+
 #l-search-chat {
     height: 50px;
-    background-color: #e3dbd3;
+    background-color: #ededed;
     border-bottom: 1px solid #d2d1d0;
+}
+
+#l-search-chat input {
+    width: 100%;
+    border: none;
+    border-radius: 50px;
+    font-size: 14px;
+    padding: 5px 5px 5px 15px;
 }
 
 #l-chat-container {
     background-color: white;
+}
+
+.l-chat .rect-img img {
+    float: left;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
 }
 
 .l-chat {
@@ -85,7 +197,7 @@
 }
 
 .chat-active {
-    background-color: #ededed;
+    background-color: #e3dbd3;
 }
 
 #r-myspeaker {
@@ -104,18 +216,24 @@
 #r-input-bar {
     display: flex;
     justify-content: space-around;
-    border: 1px solid #000;
     height: 72px;
     padding: 10px 20px;
-    font-size: 40px;
+    font-size: 26px;
 }
 
 #r-input-bar input {
     flex-grow: 1;
     margin: 0 15px;
+    border: none;
     border-radius: 50px;
-    font-size: 24px;
-    padding: 5px;
+    font-size: 20px;
+    padding: 5px 5px 5px 15px;
+}
+
+#r-input-bar i {
+    padding: 12px 5px 5px 5px;
+    cursor: pointer;
+    color: gray;
 }
 
 .msg-wrapper {
@@ -125,7 +243,7 @@
 }
 
 .msg-mine {
-    background-color: lightgreen;
+    background-color: #d3edb1;
     align-self: flex-end;
 }
 

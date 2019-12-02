@@ -25,6 +25,6 @@ $(document).ready(function() {
     $('#text-input').click(function() {
         // cambio icona alla destra del campo di input, rimuovendo e aggiungendo classi di Fontawesome
         $('#send-input .fa-microphone').addClass('fa-arrow-alt-circle-right').removeClass('fa-microphone');
-    })
+    });
 
 });
