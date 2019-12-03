@@ -51,7 +51,6 @@ input:focus {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    /* width: 30%; */
     width: 330px;
     float: left;
     height: 100%;

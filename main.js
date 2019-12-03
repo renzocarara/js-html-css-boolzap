@@ -77,11 +77,12 @@ function sendMsg() {
     if (messageToSend) {
         // clono un elemento template e rimuovo la classe template
         var HTMLnewElement = $('.template').clone().removeClass('template');
+        var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
         $(HTMLnewElement).addClass('msg-mine'); // setto la "bubble" come messaggio inviato (allineato a dx con sfondo verde)
         $(HTMLnewElement).children('.msg-text').text(messageToSend); // inserisco testo digitato
-        $(HTMLnewElement).children('.msg-time').text('15:30'); //tbd (da implementre.. per il momento stringa fissa)
+        $(HTMLnewElement).children('.msg-time').text(currentTime); //tbd (da implementre.. per il momento stringa fissa)
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
         $('#r-conversation').append(HTMLnewElement);
@@ -98,13 +99,24 @@ function showAnswer() {
     setTimeout(function() {
         // clono un elemento template e rimuovo la classe template
         var HTMLnewElement = $('.template').clone().removeClass('template');
+        var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
         $(HTMLnewElement).addClass('msg-speaker'); // setto la "bubble" come messaggio ricevuto (allineato a sx e con sfondo bianco)
         $(HTMLnewElement).children('.msg-text').text("Ricevuto, OK!"); // inserisco testo fittizio
-        $(HTMLnewElement).children('.msg-time').text('15:31'); //tbd (da implementre.. per il momento stringa fissa)
+        $(HTMLnewElement).children('.msg-time').text(currentTime); //tbd (da implementre.. per il momento stringa fissa)
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
         $('#r-conversation').append(HTMLnewElement);
     }, 1000);
 } // end function showAnswer()
+
+
+function catchTime() {
+    // ritorna l'ora corrente nel formato hh:mm
+    var time = "";
+    var date = new Date();
+
+    time = date.getHours() + ":" + date.getMinutes();
+    return time;
+}
