@@ -26,21 +26,21 @@ body {
 
 #bcg-top {
     background-color: teal;
-    height: 15%;
+    height: 12%;
 }
 
 #bcg-bottom {
     background-color: lightgrey;
-    height: 85%;
+    height: 88%;
 }
 
 #content {
     position: absolute;
-    bottom: 3%;
-    left: 10%;
+    bottom: 2%;
+    left: 13%;
     background-color: #ededed;
-    height: 94vh;
-    width: 80vw;
+    height: 96vh;
+    width: 74vw;
 }
 
 #left-side {
@@ -68,6 +68,7 @@ body {
 
 .rect-date {
     float: right;
+    font-size: 14px;
 }
 
 #l-myself {
@@ -216,8 +217,9 @@ body {
 #r-input-bar {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     height: 72px;
-    padding: 10px 20px;
+    padding: 0 20px;
     font-size: 26px;
 }
 
@@ -227,19 +229,36 @@ body {
     border: none;
     border-radius: 50px;
     font-size: 20px;
-    padding: 5px 5px 5px 15px;
+    padding: 10px;
 }
 
 #r-input-bar i {
-    padding: 12px 5px 5px 5px;
     cursor: pointer;
     color: gray;
 }
 
 .msg-wrapper {
+    position: relative;
     margin: 15px;
-    padding: 10px;
+    padding: 10px 50px 10px 10px;
     border-radius: 5px;
+    max-width: 60%;
+    min-width: 20%;
+}
+
+.msg-wrapper i {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    padding: 5px;
+    display: none;
+}
+
+.msg-wrapper span {
+    position: absolute;
+    font-size: 10px;
+    bottom: 5px;
+    right: 10px;
 }
 
 .msg-mine {

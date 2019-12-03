@@ -38,6 +38,7 @@
                 <div id="l-search-chat" class="rect"><input id="search-input" type="text" placeholder="Cerca o inizia una nuova chat"></div>
 
                 <div id="l-chat-container">
+
                     <div class="l-chat rect chat-active">
                         <div class="rect-img"><img src="images/user2.png" alt="user image"></div>
                         <div class="rect-text">
@@ -45,6 +46,7 @@
                             <span>Ciao come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
+
                     <div class="l-chat rect">
                         <div class="rect-img"><img src="images/user3.png" alt="user image"></div>
                         <div class="rect-text">
@@ -52,6 +54,7 @@
                             <span>Ciao come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
+
                     <div class="l-chat rect">
                         <div class="rect-img"><img src="images/user5.png" alt="user image"></div>
                         <div class="rect-text">
@@ -59,6 +62,7 @@
                             <span>Ciao come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
+
                     <div class="l-chat rect">
                         <div class="rect-img"><img src="images/user1.png" alt="user image"></div>
                         <div class="rect-text">
@@ -66,6 +70,7 @@
                             <span>Ciao come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
+
                 </div>
             </div>
 
@@ -80,15 +85,22 @@
                 </div>
 
                 <div id="r-conversation">
-                    <div class="msg-wrapper msg-mine">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</div>
-                    <div class="msg-wrapper msg-speaker">totam ipsam ab illum suscipit cumque, veritatis placeat non obcaecati! Alias.</div>
-                    <div class="msg-wrapper msg-mine">Lorem ipsum doloum laceat non obcaecati! Alias.</div>
-                    <div class="msg-wrapper msg-speaker">Lorem ipsum doloum laceat non obcaecati! Alias.</div>
+                    <div class="msg-wrapper msg-mine">
+                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p><i class="fas fa-angle-down"></i><span class="msg-time">9:30</span>
+                    </div>
+                    <div class="msg-wrapper msg-mine">
+                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p><i class="fas fa-angle-down"></i><span class="msg-time">9:35</span>
+                    </div>
+                    <div class="msg-wrapper msg-speaker">
+                        <p class="msg-text">totam ipsam ab illum suscipit cumque, veritatis placeat non obcaecati! Alias.</p><i class="fas fa-angle-down"></i><span class="msg-time">10:30</span>
+                    </div>
+                    <div class="msg-wrapper msg-mine">
+                        <p class="msg-text">Lorem ipsum doloum laceat non obcaecati! Alias.</p><i class="fas fa-angle-down"></i><span class="msg-time">11:30</span>
+                    </div>
                 </div>
 
                 <div id="r-input-bar">
                     <i class="far fa-smile"></i><input id="text-input" type="text" placeholder="Scrivi un messaggio"><span id="send-input"><i class="fas fa-microphone"></i></span>
-                    <!-- <i class="fas fa-arrow-alt-circle-right"></i> -->
                 </div>
 
             </div>
@@ -96,8 +108,12 @@
     </div>
 
     <!-- questo è un template di appoggio per la creazione dei nuovi elementi HTML  -->
-    <div class="template msg-wrapper msg-mine">i am a template</div>
-
+    <div class="template msg-wrapper">
+        <p class="msg-text">i am a template</p>
+        <i class="fas fa-angle-down"></i>
+        <span class="msg-time">hh:mm</span>
+    </div>
+    <!-- fine template -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="main.js"></script>
