@@ -14,7 +14,7 @@ body {
     clear: both;
 }
 
-.template {
+.template, .notSearched {
     display: none;
 }
 
