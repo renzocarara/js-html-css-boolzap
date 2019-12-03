@@ -8,6 +8,10 @@ body {
     font-family: Helvetica, sans-serif;
 }
 
+input:focus {
+    outline: none;
+}
+
 .clearfix {
     content: '';
     display: table;
@@ -174,10 +178,25 @@ body {
     border-bottom: 1px solid #d2d1d0;
 }
 
+#searchIcon {
+    background-color: white;
+    color: gray;
+    width: 8%;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 50px;
+    font-size: 14px;
+    padding: 5px 5px 5px 15px;
+}
+
 #l-search-chat input {
-    width: 100%;
+    width: 88%;
     border: none;
-    border-radius: 50px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 0;
     font-size: 14px;
     padding: 5px 5px 5px 15px;
 }
