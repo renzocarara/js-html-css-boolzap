@@ -17,38 +17,39 @@ $(document).ready(function() {
     }); // end evento keypress tasto ENTER su campo send message
 
 
-    // catturo click nel campo input
-    $('#text-input').click(function() {
-        // cambio icona alla destra del campo di input, rimuovendo e aggiungendo classi di Fontawesome
-        $('#send-input .fa-microphone').addClass('fa-arrow-alt-circle-right').removeClass('fa-microphone');
+    // catturo l'evento "keyup" nel campo input della barra invio messagi
+    $('#text-input').keyup(function() {
+
+        // verifco che il campo input abbia un valore
+        if ($('#text-input').val()) {
+            // cambio icona alla destra del campo di input, rimuovendo e aggiungendo classi di Fontawesome
+            $('#send-input i').addClass('far fa-paper-plane').removeClass('fas fa-microphone');
+        } else {
+            // ripristino icona alla destra del campo di input, rimuovendo e aggiungendo classi di Fontawesome
+            $('#send-input i').removeClass('far fa-paper-plane').addClass('fas fa-microphone');
+        }
     }); // end evento click in message input
 
 
     // intercetto la pressione di un tasto sul campo barra di ricerca
     $('#search-input').keyup(function(event) {
-        console.log("event.which", event.which);
 
         var stringToSearch = $('#search-input').val();
+        // solo se il campo search è valorizzato, elaboro
         if (stringToSearch) {
-            // se il campo search è valorizzato, elaboro
-            console.log("stringToSearch:", stringToSearch);
-
             // ciclo each su tutte le chat presenti
             $('#l-chat-container .l-chat').each(function(index) {
 
                 // estraggo il nome del contatto per la chat corrente
                 var contactName = $(this).find('.contact-name').text();
-                console.log("nome contatto:", contactName);
 
                 // verifico se il nome del contatto contiene la stringa ricercata
                 if (contactName.toLowerCase().includes(stringToSearch.toLowerCase())) {
                     // questo contatto contiene la stringa ricercata
-                    console.log("stringa cercata:", stringToSearch, " è presente nel contatto:", contactName);
                     // rendo il contatto visibile, qualora non lo fosse, rimuovendo classe che me lo nasconde
                     $(this).removeClass('notSearched');
 
                 } else {
-                    console.log("stringa cercata:", stringToSearch, " NON è presente nel contatto:", contactName);
                     // questo contatto NON contiene la stringa ricercata
                     // nascondo il contatto che non soddisfa il parametro di ricerca
                     $(this).addClass('notSearched');
@@ -57,11 +58,9 @@ $(document).ready(function() {
 
         } else {
             // il campo search è vuoto
-            console.log("campo vuoto");
-
             // ciclo each su tutte le chat presenti
             $('#l-chat-container .l-chat').each(function() {
-                // rendi tutti i contatti visibili
+                // rendo tutti i contatti visibili
                 $(this).removeClass('notSearched');
             });
         }
