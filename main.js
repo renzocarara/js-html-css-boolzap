@@ -67,6 +67,49 @@ $(document).ready(function() {
 
     }); // end evento keyup in search bar
 
+
+    // gestico evento mouseenter sui messaggi visualizzati
+    $('.msg-wrapper').mouseenter(function() {
+        console.log("mouseenter su msg-wrapper");
+        // quando l'utente posiziona il mouse all'interno del messaggio,
+        // visualizzo un simbolino che dà accesso ad un dropdown menu
+        $(this).find('.angle-down').removeClass('hidden');
+
+
+    });
+    // gestico evento mouseleave sui messaggi visualizzati
+    $('.msg-wrapper').mouseleave(function() {
+        console.log("mouseleave su msg-wrapper");
+        // quando l'utente sposta il mouse all'esterno del messaggio,
+        // nascondo il simbolino che dà accesso al dropdown menu
+        $(this).find('.angle-down').addClass('hidden');
+
+
+    });
+    // gestico click su icona per dropdown menu
+    $('.angle-down').click(function() {
+        console.log("click su msg-dropdown");
+        // quando l'utente clicca sull'iconcina del dropdown menu,
+        // visualizzo il dropdown menu
+        $(this).nextAll('.msg-dropdown').toggleClass('hidden').addClass('active');
+    });
+
+
+    // se c'è un dropdown menu aperto, e l'utente clicca in qualunque
+    // punto sul documento  nascondo il dropdown menu
+    $(document).click(function() {
+
+        //---------- per cercare un dropdown aperto potrei settare una classe (active), quando apro un dropdown
+        //---------- solo se c'e' un drop down aperto allora chiudo tutti i dropdown menu aperti
+        // if ($('.msg-dropdown').hasClass('active')) {
+        // $('.msg-dropdown').removeClass('active');
+        // $('.msg-dropdown').addClass('hidden');
+        // }
+    });
+
+
+
+
 }); // document ready
 
 // --------------------------- FUNCTIONs ---------------------------------------
@@ -76,7 +119,9 @@ function sendMsg() {
     // procedo solo se l'utente ha inserito del testo nel campo di input
     if (messageToSend) {
         // clono un elemento template e rimuovo la classe template
-        var HTMLnewElement = $('.template').clone().removeClass('template');
+        // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
+        // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
+        var HTMLnewElement = $('.template').clone(true, true).removeClass('template');
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
@@ -98,7 +143,9 @@ function showAnswer() {
 
     setTimeout(function() {
         // clono un elemento template e rimuovo la classe template
-        var HTMLnewElement = $('.template').clone().removeClass('template');
+        // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
+        // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
+        var HTMLnewElement = $('.template').clone(true, true).removeClass('template');
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni

@@ -53,7 +53,7 @@
                         <div class="rect-img"><img src="images/user3.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Francesca</span>
-                            <span>Ciao come stai?</span></div>
+                            <span>Ciao come va?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
 
@@ -112,22 +112,37 @@
                 </div>
 
                 <div id="r-conversation">
+
                     <div class="msg-wrapper msg-mine">
-                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p><i class="fas fa-angle-down"></i><span class="msg-time">9:30</span>
+                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p>
+                        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                        <span class="msg-time">9:30</span>
+                        <div class="msg-dropdown hidden">
+                            <ul>
+                                <li>Message info</li>
+                                <li>Delete message</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="msg-wrapper msg-mine">
-                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p><i class="fas fa-angle-down"></i><span class="msg-time">9:35</span>
-                    </div>
+
                     <div class="msg-wrapper msg-speaker">
-                        <p class="msg-text">totam ipsam ab illum suscipit cumque, veritatis placeat non obcaecati! Alias.</p><i class="fas fa-angle-down"></i><span class="msg-time">10:30</span>
+                        <p class="msg-text">totam ipsam ab illum suscipit cumque, veritatis placeat non obcaecati! Alias.</p>
+                        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                        <span class="msg-time">10:30</span>
+                        <div class="msg-dropdown hidden">
+                            <ul>
+                                <li>Message info</li>
+                                <li>Delete message</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="msg-wrapper msg-mine">
-                        <p class="msg-text">Lorem ipsum doloum laceat non obcaecati! Alias.</p><i class="fas fa-angle-down"></i><span class="msg-time">11:30</span>
-                    </div>
+
                 </div>
 
                 <div id="r-input-bar">
-                    <i class="far fa-smile"></i><input id="text-input" type="text" placeholder="Scrivi un messaggio"><span id="send-input"><i class="fas fa-microphone"></i></span>
+                    <i class="far fa-smile"></i>
+                    <input id="text-input" type="text" placeholder="Scrivi un messaggio">
+                    <span id="send-input"><i class="fas fa-microphone"></i></span>
                 </div>
 
             </div>
@@ -137,8 +152,14 @@
     <!-- questo è un template di appoggio per la creazione dei nuovi elementi HTML  -->
     <div class="template msg-wrapper">
         <p class="msg-text">i am a template</p>
-        <i class="fas fa-angle-down"></i>
+        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
         <span class="msg-time">hh:mm</span>
+        <div class="msg-dropdown hidden">
+            <ul>
+                <li>Message info</li>
+                <li>Delete message</li>
+            </ul>
+        </div>
     </div>
     <!-- fine template -->
 
