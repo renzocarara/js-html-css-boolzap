@@ -22,7 +22,7 @@ input:focus {
 .template,
 .notSearched,
 .hidden,
-.noShow {
+.no-show {
     display: none;
 }
 
@@ -255,7 +255,7 @@ input:focus {
 }
 
 /* contenitore di una singola conversazione associata ad un contatto*/
-.r-conversation {
+.conversation {
     display: none;
     flex-direction: column;
     align-items: flex-start;

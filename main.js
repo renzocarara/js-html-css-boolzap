@@ -1,4 +1,160 @@
+// DESCRIZIONE STRUTTURA DATI:
+// boolzappDB: è array di n elementi, ognuno rappresenta una chat di uno specifico CONTATTO
+// è una array di elementi composti da oggetti omogenei contenenti una coppia di proprietà
+// la prima proprietà è una stringa con il nome del CONTATTO
+// la seconda proprietà è un altro array ed è la CHAT
+// ogni elemento di questo secondo array CHAT è un oggetto con 3 proprietà
+// questi oggetti rappresentano ognuno un messaggio scambiato, e tutti insieme compongono la CHAT
+
+//
+// un elemento di boolzappDB è fatto così:
+// {
+//     'CONTATTO':'nome del contatto',
+//     'CHAT': [messaggio, messaggio, messaggio,...]
+// }
+//
+// un elemento 'messaggio' di CHAT è fatto così:
+// {
+//     'TIPO MESSAGGIO': 'msg-mine' o 'msg-speaker',
+//     'TESTO': 'Ciao io sono Michele',
+//     'ORA': '9:30'
+// }
+
+
+var boolzappDB = [
+    // elemento 1
+    {
+        'contact': 'michele',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Ciao io sono Michele',
+                'msgTime': '9:30'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Ciao Michele, come va?',
+                'msgTime': '9:31'
+            }
+        ]
+    },
+    // elemento 2
+    {
+        'contact': 'francesca',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Ciao Francesca, come stai',
+                'msgTime': '10:50'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Molto bene, grazie',
+                'msgTime': '10:51'
+            },
+
+            {
+                'msgFlow': 'msg-mine',
+                'msgText': 'Ci vediamo?',
+                'msgTime': '10:51'
+            }
+        ]
+    },
+    // elemento 3
+    {
+        'contact': 'antonio',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Ciao Antonio, come va',
+                'msgTime': '10:45'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Sono stanco grazie',
+                'msgTime': '10:46'
+            }
+        ]
+    },
+    // elemento 4
+    {
+        'contact': 'mario',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Mario ci sei?',
+                'msgTime': '10:45'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Eccomi',
+                'msgTime': '10:46'
+            }
+        ]
+    },
+    // elemento 5
+    {
+        'contact': 'marco',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Ciao Marco, ci vediamo?',
+                'msgTime': '10:45'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Perchè no!',
+                'msgTime': '10:46'
+            }
+        ]
+    },
+    // elemento 6
+    {
+        'contact': 'franco',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Franco dove sei finito?',
+                'msgTime': '10:45'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Sto scrivendo un DB...',
+                'msgTime': '10:46'
+            }
+        ]
+    },
+    // elemento 7
+    {
+        'contact': 'milena',
+
+        'chat': [{
+                'msgFlow': 'msg-mine',
+                'msgText': 'Milena mi aiuti?',
+                'msgTime': '8:44'
+            },
+
+            {
+                'msgFlow': 'msg-speaker',
+                'msgText': 'Dimmi pure, cosa posso fare per te?',
+                'msgTime': '8:46'
+            }
+        ]
+    }
+];
+
+
 $(document).ready(function() {
+
+    // costruisco le conversazioni, leggo da una struttura dati presente in questo script,
+    // creo il codice HTML e scrivo sulla pagina
+    createChats();
 
     // MILESTONE1 - PUNTO 2
 
@@ -74,7 +230,6 @@ $(document).ready(function() {
 
     // gestisco click su CONTATTO nell'elenco in colonna a sinistra
     $('.l-chat').click(function() {
-        console.log("click su contatto");
         // quando l'utente clicca su uno dei contatti in elenco,
         // nel pannello di destra deve apparire la conversazione associata a quel contatto
         // ogni conversazione è identificata da un attributo data-contact, che mi dà la corrispondenza con i contatti
@@ -88,11 +243,11 @@ $(document).ready(function() {
         var contactName = $(this).find('.contact-name').text();
 
         // nascondo tutte le conversazioni, inclusa quella attualmente visualizzata
-        $('.r-conversation').removeClass('c-active');
+        $('.conversation').removeClass('c-active');
 
         // visualizzo nuova conversazione appena selezionata, utilizzo il nome del contatto
         // per referenziarmi alla giusta conversazione, tramite l'attributo data-contact
-        $('.r-conversation[data-contact="' + contactName.toLowerCase() + '"]').addClass('c-active');
+        $('.conversation[data-contact="' + contactName.toLowerCase() + '"]').addClass('c-active');
 
         // aggiorno i campi del pannello di intestazione (sopra alla conversazione)
         // dove appare nome e immagine del contatto relativo alla chat corrente
@@ -100,7 +255,6 @@ $(document).ready(function() {
         $('#r-myspeaker .speaker-text span:first-child').text(contactName);
         // aggiorno l'attributo src del tag img con la funzione attr()
         $('#r-myspeaker img').attr("src", "images/" + contactName.toLowerCase() + ".png");
-
     });
 
     // MILESTONE3 - PUNTO 2
@@ -110,8 +264,6 @@ $(document).ready(function() {
         // quando l'utente posiziona il mouse all'interno del messaggio,
         // visualizzo un simbolino che dà accesso ad un dropdown menu
         $(this).find('.angle-down').removeClass('hidden');
-
-
     });
 
     // gestisco evento mouseleave sui messaggi visualizzati
@@ -119,27 +271,22 @@ $(document).ready(function() {
         // quando l'utente sposta il mouse all'esterno del messaggio,
         // nascondo il simbolino che dà accesso al dropdown menu
         $(this).find('.angle-down').addClass('hidden');
-
-
     });
 
     // gestisco click su icona per dropdown menu
     $('.angle-down').click(function() {
         // quando l'utente clicca sull'iconcina del dropdown menu,
         // visualizzo il dropdown menu
-        $(this).nextAll('.msg-dropdown').toggleClass('noShow');
-
+        $(this).nextAll('.msg-dropdown').toggleClass('no-show');
     });
 
     // gestisco click su voce menu "Delete message"
     $('.msg-dropdown ul li:last-child').click(function() {
-        console.log("delete selected");
         // rimuovo (cancello definitivamente l'elemento HTML)
         // il messaggio associato al dropdown menu cliccato
         // partendo dall'elemnto cliccato (this) scorro verso l'alto il DOM,
         // cercando il primo ANCESTOR di classe "msg-wrapper"
         $(this).closest('.msg-wrapper').remove();
-
     });
 
 }); // document ready
@@ -153,7 +300,7 @@ function sendMsg() {
         // clono un elemento template e rimuovo la classe template
         // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
         // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
-        var HTMLnewElement = $('.template').clone(true, true).removeClass('template');
+        var HTMLnewElement = $('.template.msg-wrapper').clone(true, true).removeClass('template');
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
@@ -162,7 +309,7 @@ function sendMsg() {
         $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
 
         // faccio una append del nuovo elemento all'interno della conversazione
-        $('.r-conversation.c-active').append(HTMLnewElement);
+        $('.conversation.c-active').append(HTMLnewElement);
 
         //resetto il campo di input inserendo una stringa vuota
         $('#r-input-bar input').val("");
@@ -180,7 +327,7 @@ function showAnswer() {
         // clono un elemento template e rimuovo la classe template
         // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
         // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
-        var HTMLnewElement = $('.template').clone(true, true).removeClass('template');
+        var HTMLnewElement = $('.template.msg-wrapper').clone(true, true).removeClass('template');
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
@@ -189,7 +336,7 @@ function showAnswer() {
         $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
-        $('.r-conversation.c-active').append(HTMLnewElement);
+        $('.conversation.c-active').append(HTMLnewElement);
     }, 1000);
 } // end function showAnswer()
 
@@ -201,4 +348,53 @@ function catchTime() {
 
     time = date.getHours() + ":" + date.getMinutes();
     return time;
+}
+
+
+function createChats() {
+
+    // ciclo su tutto il DB e scorro tutti gli elementi
+    for (var i = 0; i < boolzappDB.length; i++) {
+
+        // estraggo il nome contatto corrente
+        var contact = boolzappDB[i].contact;
+
+        // estraggo tutta la chat corrente
+        var chat = boolzappDB[i].chat;
+
+        // clono un elemento 'conversation' che rappresenta una chat
+        var conversation = $('.conversation.template').clone(true, true).removeClass('template');
+
+        // inizio a valorizzare il clone col valore estratto dal DB
+        conversation.attr('data-contact', contact); // aggiungo l'attributo data-contact
+
+        // scorro i messaggi della chat accoppiata al contatto corrente
+        for (var j = 0; j < chat.length; j++) {
+
+            // estraggo le singole proprietà del messaggio corrente
+            var flow = chat[j].msgFlow;
+            var text = chat[j].msgText;
+            var time = chat[j].msgTime;
+
+            // creo un clone del messaggio
+            var message = $('.msg-wrapper.template').clone(true, true).removeClass('template');
+
+            // valorizzo il clone coi valori estratti dal DB
+            message.addClass('' + flow); // aggiungo la classe che specifica se il msg è ricevuto o spedito
+            message.find('.msg-text').text(text); // aggiungo il testo del messaggio
+            message.find('.msg-time').text(time); // aggiungo l'ora
+
+            // appendo il messaggio che ho ricostruito alla chat che sto costruendo
+            conversation.append(message);
+
+        } // fine ciclo scansione messaggi della chat
+
+        // scrivo la singola conversazione sulla pagina HTML all'interno del contenitore 'conversations'
+        // (da non confondersi con 'conversation' che rappresenta una singola chat)
+        $('.conversations').append(conversation);
+
+    } // fine ciclo scansione contatti/chats
+
+    // setto come "attiva" la 1a conversazione che ho caricato dal DB
+    $('.conversation').first().addClass('c-active');
 }
