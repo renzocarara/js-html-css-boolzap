@@ -65,6 +65,7 @@ $(document).ready(function() {
 
     }); // end evento keyup in search bar
 
+
     // MILESTONE3 - PUNTO 1
 
     // gestisco click su CONTATTO nell'elenco in colonna a sinistra
@@ -79,15 +80,22 @@ $(document).ready(function() {
         // metto come contatto attivo quello appena cliccato
         $(this).addClass('chat-active');
 
-        // estraggo il nome del contatto cliccato (e lo trasformo in lowercase)
-        var contactName = $(this).find('.contact-name').text().toLowerCase();
+        // estraggo il nome del contatto cliccato
+        var contactName = $(this).find('.contact-name').text();
 
         // nascondo tutte le conversazioni, inclusa quella attualmente visualizzata
         $('.r-conversation').removeClass('c-active');
 
         // visualizzo nuova conversazione appena selezionata, utilizzo il nome del contatto
         // per referenziarmi alla giusta conversazione, tramite l'attributo data-contact
-        $('.r-conversation[data-contact="' + contactName + '"]').addClass('c-active');
+        $('.r-conversation[data-contact="' + contactName.toLowerCase() + '"]').addClass('c-active');
+
+        // aggiorno i campi del pannello di intestazione (sopra alla conversazione)
+        // dove appare nome e immagine del contatto relativo alla chat corrente
+        // aggiorno il nome
+        $('#r-myspeaker .speaker-text span:first-child').text(contactName);
+        // aggiorno l'attributo src del tag img con la funzione attr()
+        $('#r-myspeaker img').attr("src", "images/" + contactName.toLowerCase() + ".png");
 
     });
 
@@ -142,11 +150,10 @@ $(document).ready(function() {
     // ------------------------ IN PROGRESS ----------------------
 
 
-    // gestisco click su icona per dropdown menu
+    // gestisco click su voce menu "Delete message"
     $('.msg-dropdown ul li:last-child').click(function() {
-        // click su voce menu "Delete message"
-
-        // rimuovo (cancello definitivamente) il messaggio associato al dropdown menu cliccato
+        // rimuovo (cancello definitivamente l'elemento HTML)
+        // il messaggio associato al dropdown menu cliccato
         // partendo dall'elemnto cliccato (this) scorro verso l'alto il DOM,
         // cercando il primo ANCESTOR di classe "msg-wrapper"
         $(this).closest('.msg-wrapper').remove();
