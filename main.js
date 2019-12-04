@@ -1,10 +1,11 @@
-// DESCRIZIONE STRUTTURA DATI:
+// DATABASE:boolzappDB
+// --------------------  DESCRIZIONE STRUTTURA DATI: ---------------------------
 // boolzappDB: è array di n elementi, ognuno rappresenta una chat di uno specifico CONTATTO
 // è una array di elementi composti da oggetti omogenei contenenti una coppia di proprietà
 // la prima proprietà è una stringa con il nome del CONTATTO
 // la seconda proprietà è un altro array ed è la CHAT
 // ogni elemento di questo secondo array CHAT è un oggetto con 3 proprietà
-// questi oggetti rappresentano ognuno un messaggio scambiato, e tutti insieme compongono la CHAT
+// questi oggetti rappresentano ognuno un messaggio scambiato, e tutti insieme compongono una CHAT
 
 //
 // un elemento di boolzappDB è fatto così:
