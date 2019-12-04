@@ -101,9 +101,8 @@ $(document).ready(function() {
 
     // MILESTONE3 - PUNTO 2
 
-    // gestico evento mouseenter sui messaggi visualizzati
+    // gestisco evento mouseenter sui messaggi visualizzati
     $('.msg-wrapper').mouseenter(function() {
-        console.log("mouseenter su msg-wrapper");
         // quando l'utente posiziona il mouse all'interno del messaggio,
         // visualizzo un simbolino che dà accesso ad un dropdown menu
         $(this).find('.angle-down').removeClass('hidden');
@@ -111,9 +110,8 @@ $(document).ready(function() {
 
     });
 
-    // gestico evento mouseleave sui messaggi visualizzati
+    // gestisco evento mouseleave sui messaggi visualizzati
     $('.msg-wrapper').mouseleave(function() {
-        console.log("mouseleave su msg-wrapper");
         // quando l'utente sposta il mouse all'esterno del messaggio,
         // nascondo il simbolino che dà accesso al dropdown menu
         $(this).find('.angle-down').addClass('hidden');
@@ -121,7 +119,7 @@ $(document).ready(function() {
 
     });
 
-    // gestico click su icona per dropdown menu
+    // gestisco click su icona per dropdown menu
     $('.angle-down').click(function() {
         // quando l'utente clicca sull'iconcina del dropdown menu,
         // visualizzo il dropdown menu
@@ -129,22 +127,30 @@ $(document).ready(function() {
 
     });
 
+    // ------------------------ IN PROGRESS ----------------------
     // se c'è un dropdown menu aperto, e l'utente clicca in qualunque
     // punto sul documento  nascondo il dropdown menu
     $(document).click(function() {
-        console.log("CLICK SU DOCUMENTO");
+        // console.log("CLICK SU DOCUMENTO");
         //---------- per cercare un dropdown aperto potrei settare una classe (visible), quando apro un dropdown
         //---------- solo se c'e' un drop down aperto allora chiudo tutti i dropdown menu aperti
-
-        // problema:e se l'utente clicca sulla freccetina per APRIRE il dropdown?
-        // DOVREI ESSERE SICURO CHE CLICK SU DOCUMENT,  VIENE GESTITO PRIMA DI CLICK SU FRECCETINA, COME???
-        // L'ORDINE DI DICHIARAZIONE NELLO SCRIPT MI GARANTISCE QUESTA COSA?? NO EVIDENTEMENTE
-        // METTO UN RITARDO?? SETTIMEOUT?
-
         // if ($('.msg-dropdown').hasClass('visible')) {
         //     $('.msg-dropdown').removeClass('visible');
         //     $('.msg-dropdown').addClass('hidden');
         // }
+    });
+    // ------------------------ IN PROGRESS ----------------------
+
+
+    // gestisco click su icona per dropdown menu
+    $('.msg-dropdown ul li:last-child').click(function() {
+        // click su voce menu "Delete message"
+
+        // rimuovo (cancello definitivamente) il messaggio associato al dropdown menu cliccato
+        // partendo dall'elemnto cliccato (this) scorro verso l'alto il DOM,
+        // cercando il primo ANCESTOR di classe "msg-wrapper"
+        $(this).closest('.msg-wrapper').remove();
+
     });
 
 
