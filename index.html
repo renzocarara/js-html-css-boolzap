@@ -45,7 +45,7 @@
                         <div class="rect-img"><img src="images/user2.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Michele</span>
-                            <span>Ciao come stai?</span></div>
+                            <span>Ciao io sono Michele.</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
 
@@ -53,7 +53,7 @@
                         <div class="rect-img"><img src="images/user3.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Francesca</span>
-                            <span>Ciao come va?</span></div>
+                            <span>Ciao Francesca, come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
 
@@ -61,7 +61,7 @@
                         <div class="rect-img"><img src="images/user5.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Antonio</span>
-                            <span>Ciao come stai?</span></div>
+                            <span>Ciao Antonio, come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
 
@@ -69,7 +69,7 @@
                         <div class="rect-img"><img src="images/user1.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Mario</span>
-                            <span>Ciao come stai?</span></div>
+                            <span>Hello Mario, come stai?</span></div>
                         <div class="rect-date">12:30</div>
                     </div>
 
@@ -77,24 +77,24 @@
                         <div class="rect-img"><img src="images/user4.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Marco</span>
-                            <span>Ciao come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                            <span></span></div>
+                        <div class="rect-date"></div>
                     </div>
 
                     <div class="l-chat rect">
                         <div class="rect-img"><img src="images/user4.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Franco</span>
-                            <span>Ciao come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                            <span></span></div>
+                        <div class="rect-date"></div>
                     </div>
 
                     <div class="l-chat rect">
                         <div class="rect-img"><img src="images/user3.png" alt="user image"></div>
                         <div class="rect-text">
                             <span class="contact-name">Milena</span>
-                            <span>Ciao come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                            <span></span></div>
+                        <div class="rect-date"></div>
                     </div>
 
 
@@ -111,32 +111,117 @@
                     <i class="fas fa-search"></i>
                 </div>
 
-                <div id="r-conversation">
-
-                    <div class="msg-wrapper msg-mine">
-                        <p class="msg-text">test Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum odit eius</p>
-                        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
-                        <span class="msg-time">9:30</span>
-                        <div class="msg-dropdown hidden">
-                            <ul>
-                                <li>Message info</li>
-                                <li>Delete message</li>
-                            </ul>
+                <div class="conversations">
+                    <div class="r-conversation c-active" data-contact="michele">
+                        <div class="msg-wrapper msg-mine">
+                            <p class="msg-text">Ciao io sono Michele.</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">9:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="msg-wrapper msg-speaker">
+                            <p class="msg-text">Ciao Michele, come va?</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">10:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="msg-wrapper msg-speaker">
-                        <p class="msg-text">totam ipsam ab illum suscipit cumque, veritatis placeat non obcaecati! Alias.</p>
-                        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
-                        <span class="msg-time">10:30</span>
-                        <div class="msg-dropdown hidden">
-                            <ul>
-                                <li>Message info</li>
-                                <li>Delete message</li>
-                            </ul>
+                    <div class="r-conversation" data-contact="francesca">
+                        <div class="msg-wrapper msg-mine">
+                            <p class="msg-text">Ciao Francesca, come stai?</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">23:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="msg-wrapper msg-speaker">
+                            <p class="msg-text">Bene grazie.</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">23:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="r-conversation" data-contact="antonio">
+                        <div class="msg-wrapper msg-mine">
+                            <p class="msg-text">Ciao Antonio, come stai?</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">23:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="msg-wrapper msg-speaker">
+                            <p class="msg-text">Sto imparando JS..., c'è da faticare...</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">23:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="r-conversation" data-contact="mario">
+                        <div class="msg-wrapper msg-mine">
+                            <p class="msg-text">Hello Mario, come stai?</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">12:50</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="msg-wrapper msg-speaker">
+                            <p class="msg-text">Very well, thank you!</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">13:29</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="msg-wrapper msg-mine">
+                            <p class="msg-text">See you soon! Bye</p>
+                            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+                            <span class="msg-time">13:30</span>
+                            <div class="msg-dropdown hidden">
+                                <ul>
+                                    <li>Message info</li>
+                                    <li>Delete message</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="r-input-bar">

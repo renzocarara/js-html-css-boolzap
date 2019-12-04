@@ -251,14 +251,23 @@ input:focus {
     height: 60px;
 }
 
-/* contenitore dei messaggi visualizzati */
-#r-conversation {
-    display: flex;
+/* contenitore di una singola conversazione associata ad un contatto*/
+.r-conversation {
+    display: none;
     flex-direction: column;
     align-items: flex-start;
+    flex-grow: 1;
+}
+
+/* contenitore di tutte le conversazioni */
+.conversations {
+    flex-grow: 1;
     background-image: url(images/background.png);
     background-repeat: repeat;
-    flex-grow: 1;
+}
+
+.c-active {
+    display: flex;
 }
 
 /* barra con campo input e icone */
@@ -340,6 +349,7 @@ input:focus {
 .msg-dropdown ul li {
     padding: 10px;
     list-style-type: none;
+    cursor: pointer;
 }
 
 .msg-dropdown ul li:hover {

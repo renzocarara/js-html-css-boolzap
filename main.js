@@ -3,7 +3,6 @@ $(document).ready(function() {
     // catturo click sull'icona di invio messaggio
     $('#send-input').click(function() {
         sendMsg(); //invoco funzione per gestire invio messaggio
-        showAnswer(); // simulo una risposta dell'interlocutore
     });
 
     // catturo evento "keypress" = ENTER, quando il cursore è posizionato
@@ -12,7 +11,6 @@ $(document).ready(function() {
         // è stato premuto tasto ENTER (codice 13)
         if (event.which == 13) {
             sendMsg(); //invoco funzione per gestire invio messaggio
-            showAnswer(); // simulo una risposta dell'interlocutore
         }
     }); // end evento keypress tasto ENTER su campo send message
 
@@ -67,6 +65,41 @@ $(document).ready(function() {
 
     }); // end evento keyup in search bar
 
+    // MILESTONE3 - PUNTO 1
+
+    // gestisco click su CONTATTO nell'elenco in colonna a sinistra
+    $('.l-chat').click(function() {
+        console.log("click su contatto");
+        // quando l'utente clicca su uno dei contatti in elenco,
+        // nel pannello di destra deve apparire la conversazione associata a quel contatto
+        // ogni conversazione è identificata da un attributo data-contact, che mi dà la corrispondenza con i contatti
+
+        // disattivo il precedente contatto attivo
+        $('.l-chat').removeClass('chat-active');
+        // metto come contatto attivo quello appena cliccato
+        $(this).addClass('chat-active');
+
+        // estraggo il nome del contatto cliccato (e lo trasformo in lowercase)
+        var contactName = $(this).find('.contact-name').text().toLowerCase();
+
+        // nascondo tutte le conversazioni, inclusa quella attualmente visualizzata
+        $('.r-conversation').removeClass('c-active');
+
+        // visualizzo nuova conversazione appena selezionata, utilizzo il nome del contatto
+        // per referenziarmi alla giusta conversazione, tramite l'attributo data-contact
+        $('.r-conversation[data-contact="' + contactName + '"]').addClass('c-active');
+
+    });
+
+
+
+
+
+
+
+
+
+    // MILESTONE3 - PUNTO 2
 
     // gestico evento mouseenter sui messaggi visualizzati
     $('.msg-wrapper').mouseenter(function() {
@@ -77,6 +110,7 @@ $(document).ready(function() {
 
 
     });
+
     // gestico evento mouseleave sui messaggi visualizzati
     $('.msg-wrapper').mouseleave(function() {
         console.log("mouseleave su msg-wrapper");
@@ -86,28 +120,32 @@ $(document).ready(function() {
 
 
     });
+
     // gestico click su icona per dropdown menu
     $('.angle-down').click(function() {
-        console.log("click su msg-dropdown");
         // quando l'utente clicca sull'iconcina del dropdown menu,
         // visualizzo il dropdown menu
-        $(this).nextAll('.msg-dropdown').toggleClass('hidden').addClass('active');
-    });
+        $(this).nextAll('.msg-dropdown').toggleClass('hidden').addClass('visible');
 
+    });
 
     // se c'è un dropdown menu aperto, e l'utente clicca in qualunque
     // punto sul documento  nascondo il dropdown menu
     $(document).click(function() {
-
-        //---------- per cercare un dropdown aperto potrei settare una classe (active), quando apro un dropdown
+        console.log("CLICK SU DOCUMENTO");
+        //---------- per cercare un dropdown aperto potrei settare una classe (visible), quando apro un dropdown
         //---------- solo se c'e' un drop down aperto allora chiudo tutti i dropdown menu aperti
-        // if ($('.msg-dropdown').hasClass('active')) {
-        // $('.msg-dropdown').removeClass('active');
-        // $('.msg-dropdown').addClass('hidden');
+
+        // problema:e se l'utente clicca sulla freccetina per APRIRE il dropdown?
+        // DOVREI ESSERE SICURO CHE CLICK SU DOCUMENT,  VIENE GESTITO PRIMA DI CLICK SU FRECCETINA, COME???
+        // L'ORDINE DI DICHIARAZIONE NELLO SCRIPT MI GARANTISCE QUESTA COSA?? NO EVIDENTEMENTE
+        // METTO UN RITARDO?? SETTIMEOUT?
+
+        // if ($('.msg-dropdown').hasClass('visible')) {
+        //     $('.msg-dropdown').removeClass('visible');
+        //     $('.msg-dropdown').addClass('hidden');
         // }
     });
-
-
 
 
 }); // document ready
@@ -125,16 +163,17 @@ function sendMsg() {
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
-        $(HTMLnewElement).addClass('msg-mine'); // setto la "bubble" come messaggio inviato (allineato a dx con sfondo verde)
+        $(HTMLnewElement).addClass('msg-mine'); // stilo il messaggio come messaggio inviato (allineato a dx con sfondo verde)
         $(HTMLnewElement).children('.msg-text').text(messageToSend); // inserisco testo digitato
-        $(HTMLnewElement).children('.msg-time').text(currentTime); //tbd (da implementre.. per il momento stringa fissa)
+        $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
 
-        // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
-        $('#r-conversation').append(HTMLnewElement);
+        // faccio una append del nuovo elemento all'interno della conversazione
+        $('.r-conversation.c-active').append(HTMLnewElement);
 
-        //resetto il campo di input
+        //resetto il campo di input inserendo una stringa vuota
         $('#r-input-bar input').val("");
 
+        showAnswer(); // simulo una risposta dell'interlocutore
     }
 }
 
@@ -149,12 +188,12 @@ function showAnswer() {
         var currentTime = catchTime();
 
         // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
-        $(HTMLnewElement).addClass('msg-speaker'); // setto la "bubble" come messaggio ricevuto (allineato a sx e con sfondo bianco)
+        $(HTMLnewElement).addClass('msg-speaker'); // stilo il messaggio come messaggio ricevuto (allineato a sx e con sfondo bianco)
         $(HTMLnewElement).children('.msg-text').text("Ricevuto, OK!"); // inserisco testo fittizio
-        $(HTMLnewElement).children('.msg-time').text(currentTime); //tbd (da implementre.. per il momento stringa fissa)
+        $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
-        $('#r-conversation').append(HTMLnewElement);
+        $('.r-conversation.c-active').append(HTMLnewElement);
     }, 1000);
 } // end function showAnswer()
 
