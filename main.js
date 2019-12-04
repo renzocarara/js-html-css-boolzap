@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    // MILESTONE1 - PUNTO 2
+
     // catturo click sull'icona di invio messaggio
     $('#send-input').click(function() {
         sendMsg(); //invoco funzione per gestire invio messaggio
@@ -28,6 +30,8 @@ $(document).ready(function() {
         }
     }); // end evento click in message input
 
+
+    // MILESTONE2 - PUNTO 2
 
     // intercetto la pressione di un tasto sul campo barra di ricerca
     $('#search-input').keyup(function(event) {
@@ -99,14 +103,6 @@ $(document).ready(function() {
 
     });
 
-
-
-
-
-
-
-
-
     // MILESTONE3 - PUNTO 2
 
     // gestisco evento mouseenter sui messaggi visualizzati
@@ -131,27 +127,13 @@ $(document).ready(function() {
     $('.angle-down').click(function() {
         // quando l'utente clicca sull'iconcina del dropdown menu,
         // visualizzo il dropdown menu
-        $(this).nextAll('.msg-dropdown').toggleClass('hidden').addClass('visible');
+        $(this).nextAll('.msg-dropdown').toggleClass('noShow');
 
     });
-
-    // ------------------------ IN PROGRESS ----------------------
-    // se c'è un dropdown menu aperto, e l'utente clicca in qualunque
-    // punto sul documento  nascondo il dropdown menu
-    $(document).click(function() {
-        // console.log("CLICK SU DOCUMENTO");
-        //---------- per cercare un dropdown aperto potrei settare una classe (visible), quando apro un dropdown
-        //---------- solo se c'e' un drop down aperto allora chiudo tutti i dropdown menu aperti
-        // if ($('.msg-dropdown').hasClass('visible')) {
-        //     $('.msg-dropdown').removeClass('visible');
-        //     $('.msg-dropdown').addClass('hidden');
-        // }
-    });
-    // ------------------------ IN PROGRESS ----------------------
-
 
     // gestisco click su voce menu "Delete message"
     $('.msg-dropdown ul li:last-child').click(function() {
+        console.log("delete selected");
         // rimuovo (cancello definitivamente l'elemento HTML)
         // il messaggio associato al dropdown menu cliccato
         // partendo dall'elemnto cliccato (this) scorro verso l'alto il DOM,
@@ -159,7 +141,6 @@ $(document).ready(function() {
         $(this).closest('.msg-wrapper').remove();
 
     });
-
 
 }); // document ready
 
@@ -189,6 +170,8 @@ function sendMsg() {
         showAnswer(); // simulo una risposta dell'interlocutore
     }
 }
+
+// MILESTONE2 - PUNTO 2
 
 function showAnswer() {
     // creo e visualizzo una risposta simulata
