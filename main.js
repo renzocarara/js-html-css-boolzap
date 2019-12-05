@@ -1,5 +1,5 @@
-// DATABASE:boolzappDB
-// --------------------  DESCRIZIONE STRUTTURA DATI: ---------------------------
+// DATABASE: boolzappDB
+// DESCRIZIONE:
 // boolzappDB: è array di n elementi, ognuno rappresenta una chat di uno specifico CONTATTO
 // è una array di elementi composti da oggetti omogenei contenenti una coppia di proprietà
 // la prima proprietà è una stringa con il nome del CONTATTO
@@ -20,7 +20,6 @@
 //     'TESTO': 'Ciao io sono Michele',
 //     'ORA': '9:30'
 // }
-
 
 var boolzappDB = [
     // elemento 1
@@ -153,8 +152,8 @@ var boolzappDB = [
 
 $(document).ready(function() {
 
-    // costruisco le conversazioni, leggo da una struttura dati presente in questo script,
-    // creo il codice HTML e scrivo sulla pagina
+    // costruisco le conversazioni, leggo da una struttura dati (boolzappDB)
+    // presente in questo script, creo il codice HTML e scrivo sulla pagina
     createChats();
 
     // MILESTONE1 - PUNTO 2
@@ -166,7 +165,7 @@ $(document).ready(function() {
 
     // catturo evento "keypress" = ENTER, quando il cursore è posizionato
     // nella barra per l'invio del messaggio
-    $('#r-input-bar').keypress(function(event) {
+    $('#send-msg-bar').keypress(function(event) {
         // è stato premuto tasto ENTER (codice 13)
         if (event.which == 13) {
             sendMsg(); //invoco funzione per gestire invio messaggio
@@ -197,7 +196,7 @@ $(document).ready(function() {
         // solo se il campo search è valorizzato, elaboro
         if (stringToSearch) {
             // ciclo each su tutte le chat presenti
-            $('#l-chat-container .l-chat').each(function(index) {
+            $('#contacts-panel .contact').each(function(index) {
 
                 // estraggo il nome del contatto per la chat corrente
                 var contactName = $(this).find('.contact-name').text();
@@ -218,7 +217,7 @@ $(document).ready(function() {
         } else {
             // il campo search è vuoto
             // ciclo each su tutte le chat presenti
-            $('#l-chat-container .l-chat').each(function() {
+            $('#contacts-panel .contact').each(function() {
                 // rendo tutti i contatti visibili
                 $(this).removeClass('notSearched');
             });
@@ -230,15 +229,15 @@ $(document).ready(function() {
     // MILESTONE3 - PUNTO 1
 
     // gestisco click su CONTATTO nell'elenco in colonna a sinistra
-    $('.l-chat').click(function() {
+    $('.contact').click(function() {
         // quando l'utente clicca su uno dei contatti in elenco,
         // nel pannello di destra deve apparire la conversazione associata a quel contatto
         // ogni conversazione è identificata da un attributo data-contact, che mi dà la corrispondenza con i contatti
 
         // disattivo il precedente contatto attivo
-        $('.l-chat').removeClass('chat-active');
+        $('.contact').removeClass('contact-active');
         // metto come contatto attivo quello appena cliccato
-        $(this).addClass('chat-active');
+        $(this).addClass('contact-active');
 
         // estraggo il nome del contatto cliccato
         var contactName = $(this).find('.contact-name').text();
@@ -253,9 +252,9 @@ $(document).ready(function() {
         // aggiorno i campi del pannello di intestazione (sopra alla conversazione)
         // dove appare nome e immagine del contatto relativo alla chat corrente
         // aggiorno il nome
-        $('#r-myspeaker .speaker-text span:first-child').text(contactName);
+        $('#myspeaker-header .myspeaker-text span:first-child').text(contactName);
         // aggiorno l'attributo src del tag img con la funzione attr()
-        $('#r-myspeaker img').attr("src", "images/" + contactName.toLowerCase() + ".png");
+        $('#myspeaker-header img').attr("src", "images/" + contactName.toLowerCase() + ".png");
     });
 
     // MILESTONE3 - PUNTO 2
@@ -294,7 +293,7 @@ $(document).ready(function() {
 
 // --------------------------- FUNCTIONs ---------------------------------------
 function sendMsg() {
-    var messageToSend = $('#r-input-bar input').val();
+    var messageToSend = $('#send-msg-bar input').val();
 
     // procedo solo se l'utente ha inserito del testo nel campo di input
     if (messageToSend) {
@@ -313,7 +312,13 @@ function sendMsg() {
         $('.conversation.c-active').append(HTMLnewElement);
 
         //resetto il campo di input inserendo una stringa vuota
-        $('#r-input-bar input').val("");
+        $('#send-msg-bar input').val("");
+
+        // ripristino icona alla destra del campo di input, rimuovendo e aggiungendo classi di Fontawesome
+        $('#send-input i').removeClass('far fa-paper-plane').addClass('fas fa-microphone');
+
+        // visualizzo (sposto) il contatto in cima al panello dei contatti
+        $('.contact.contact-active').prependTo('#contacts-panel');
 
         showAnswer(); // simulo una risposta dell'interlocutore
     }
@@ -394,7 +399,7 @@ function createChats() {
         // (da non confondersi con 'conversation' che rappresenta una singola chat)
         $('.conversations').append(conversation);
 
-    } // fine ciclo scansione contatti/chats
+    } // fine ciclo scansione contatti
 
     // setto come "attiva" la 1a conversazione che ho caricato dal DB
     $('.conversation').first().addClass('c-active');

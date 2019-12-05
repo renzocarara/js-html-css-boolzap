@@ -13,99 +13,98 @@
 <body>
     <div id="container">
 
-        <div id="bcg-top"></div>
-        <div id="bcg-bottom"></div>
-
         <div id="content" class="clearfix">
 
             <div id="left-side">
 
-                <div id="l-myself" class="rect clearfix">
+                <div id="myself-header" class="box clearfix">
                     <img src="images/myself.png" alt="myself image">
                     <i class="fas fa-ellipsis-v"></i>
                     <i class="fas fa-comment-alt"></i>
                     <i class="fas fa-circle-notch"></i>
                 </div>
 
-                <div id="l-set-notification" class="rect clearfix">
-                    <div class="rect-img"><i class="fas fa-bell-slash"></i></div>
-                    <div class="rect-text">
+                <div id="notification-panel" class="box clearfix">
+                    <div class="img-box"><i class="fas fa-bell-slash"></i></div>
+                    <div class="text-box">
                         <span><strong>Ricevi notifiche di nuovi messaggi</strong></span>
                         <span><a href="">Attiva notifiche desktop</a><i class="fas fa-angle-right"></i></span>
                     </div>
                 </div>
 
-                <div id="l-search-chat" class="rect">
-                    <label id="searchIcon"><i class="fas fa-search"></i></label><input id="search-input" type="text" placeholder="Cerca o inizia una nuova chat">
+                <div id="search-bar" class="box">
+                    <label id="search-icon"><i class="fas fa-search"></i></label>
+                    <input id="search-input" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
 
-                <div id="l-chat-container">
+                <div id="contacts-panel">
 
-                    <div class="l-chat rect chat-active">
-                        <div class="rect-img"><img src="images/michele.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box contact-active">
+                        <div class="img-box"><img src="images/michele.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Michele</span>
                             <span>Ciao io sono Michele.</span></div>
-                        <div class="rect-date">12:30</div>
+                        <div class="date-box">12:30</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/francesca.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/francesca.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Francesca</span>
                             <span>Ciao Francesca, come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                        <div class="date-box">12:30</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/antonio.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/antonio.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Antonio</span>
                             <span>Ciao Antonio, come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                        <div class="date-box">12:30</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/mario.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/mario.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Mario</span>
                             <span>Hello Mario, come stai?</span></div>
-                        <div class="rect-date">12:30</div>
+                        <div class="date-box">12:30</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/marco.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/marco.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Marco</span>
                             <span>Ciao Marco ci vediamo?</span></div>
-                        <div class="rect-date">10:45</div>
+                        <div class="date-box">10:45</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/franco.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/franco.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Franco</span>
                             <span>Franco dove sei finito?</span></div>
-                        <div class="rect-date">11:30</div>
+                        <div class="date-box">11:30</div>
                     </div>
 
-                    <div class="l-chat rect">
-                        <div class="rect-img"><img src="images/milena.png" alt="user image"></div>
-                        <div class="rect-text">
+                    <div class="contact box">
+                        <div class="img-box"><img src="images/milena.png" alt="user image"></div>
+                        <div class="text-box">
                             <span class="contact-name">Milena</span>
                             <span></span>Milena mi aiuti?</div>
-                        <div class="rect-date">8:46</div>
+                        <div class="date-box">8:46</div>
                     </div>
-
 
                 </div>
             </div>
 
             <div id="right-side">
 
-                <div id="r-myspeaker" class="rect">
+                <div id="myspeaker-header" class="box">
                     <img src="images/michele.png" alt="myspeaker image">
-                    <div class="speaker-text"><span>Michele</span><br><span>ultimo accesso oggi alle 15:30</span></div>
+                    <div class="myspeaker-text">
+                        <span>Michele</span><br>
+                        <span>ultimo accesso oggi alle 15:30</span></div>
                     <i class="fas fa-ellipsis-v"></i>
                     <i class="fas fa-paperclip"></i>
                     <i class="fas fa-search"></i>
@@ -115,7 +114,7 @@
                     <!-- qui vanno inserite le chat costruite dinamicamente da JS -->
                 </div>
 
-                <div id="r-input-bar">
+                <div id="send-msg-bar">
                     <i class="far fa-smile"></i>
                     <input id="text-input" type="text" placeholder="Scrivi un messaggio">
                     <span id="send-input"><i class="fas fa-microphone"></i></span>
@@ -125,7 +124,8 @@
         </div>
     </div>
 
-    <!-- questo è un template di appoggio per la creazione dei singoli messaggi di chat  -->
+    <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
+    <!-- template per la creazione dei singoli messaggi di una conversazione  -->
     <div class="template msg-wrapper">
         <p class="msg-text">testo chat</p>
         <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
@@ -137,12 +137,10 @@
             </ul>
         </div>
     </div>
-    <!-- fine template -->
 
-
-    <!-- questo è un template di appoggio per la creazione di una chat -->
+    <!-- template per la creazione di una conversazione -->
     <div class="template conversation" data-contact="contact-name"></div>
-    <!-- fine template -->
+    <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="main.js"></script>
