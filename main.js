@@ -289,6 +289,18 @@ $(document).ready(function() {
         $(this).closest('.msg-wrapper').remove();
     });
 
+    // gestisco il click su tutto il documento per nascondere i dropdown menu visualizzati
+    // (simile all'applicazione whatsappWeb reale)
+    $(document).click(function(evento) {
+        //
+        if (!$(evento.target).closest(".msg-wrapper").length) {
+            // il click è all'esterno dell'elemento .msg-wrapper
+            // chiudo tutti i dropdown menu eventualmente aperti
+            $(".msg-dropdown").addClass("no-show");
+        }
+
+    });
+
 }); // document ready
 
 // --------------------------- FUNCTIONs ---------------------------------------
@@ -349,11 +361,8 @@ function showAnswer() {
 
 function catchTime() {
     // ritorna l'ora corrente nel formato hh:mm
-    var time = "";
     var date = new Date();
-
-    time = date.getHours() + ":" + date.getMinutes();
-    return time;
+    return (date.getHours() + ":" + date.getMinutes());
 }
 
 
