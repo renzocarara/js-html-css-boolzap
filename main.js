@@ -389,12 +389,14 @@ function catchTime() {
 
 
 function capitalizeFirstLetter(string) {
+    // funzione che, data una stringa, ritorna la stringa stessa con la prima lettera in maiuscolo
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 
 function createContacts() {
     var maxTextLen = 35; // massima lunghezza del testo visualizzabile
+
     // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemento è un contatto)
     for (var i = 0; i < boolzappDB.length; i++) {
 
@@ -410,7 +412,7 @@ function createContacts() {
             msgText = chat.msgText.slice(0, maxTextLen).concat("...");
         }
         // creo un oggetto con tutti i dati che mi servono
-        contatctInfo = {
+        contactInfo = {
             'contact': contact,
             'msgText': msgText,
             'msgTime': chat.msgTime
@@ -424,7 +426,7 @@ function createContacts() {
 
         // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
         // della variabile che passo alla funzione, passo un oggetto, che contiene tutte le info del contatto che sto creando
-        contact = contactFunction(contatctInfo);
+        contact = contactFunction(contactInfo);
 
         // inserisco il contatto sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
         $('#contacts-panel').append(contact);
@@ -434,6 +436,7 @@ function createContacts() {
     // setto come "attivo" il primo contatto che ho caricato dal DB
     $('.contact').first().addClass('contact-active');
 }
+
 
 function createChats() {
 
@@ -449,7 +452,7 @@ function createChats() {
         // recupero il codice html dal template HANDLEBARS
         var conversation = $('#template-conversation').html();
 
-        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce una funzione
         var conversationFunction = Handlebars.compile(conversation);
 
         // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
