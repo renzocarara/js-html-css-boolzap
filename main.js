@@ -391,31 +391,28 @@ function createChats() {
         // inserisco la conversazione sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
         // nel ciclo for che segue andrò a scrivere all'interno di questo elemento tutti i singoli messaggi della conversazione
         // inserisco la singola conversazione sulla pagina HTML all'interno del contenitore 'conversations'
-        // (da non confondersi con 'conversation' che rappresenta una singola chat)
+        // (da non confondersi con 'conversation' che rappresenta una singola conversazione)
         $('.conversations').append(conversation);
 
         // scorro i messaggi della chat accoppiata al contatto corrente
         for (var j = 0; j < chat.length; j++) {
 
-            // estraggo le singole proprietà del messaggio corrente
-            var flow = chat[j].msgFlow;
-            var text = chat[j].msgText;
-            var time = chat[j].msgTime;
+            // recupero il codice html dal template HANDLEBARS
+            var message = $('#template-msg-wrapper').html();
 
-            // creo un clone del messaggio
-            var message = $('.msg-wrapper.template').clone(true, true).removeClass('template');
+            // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+            var messageFunction = Handlebars.compile(message);
 
-            // valorizzo il clone coi valori estratti dal DB
-            message.addClass('' + flow); // aggiungo la classe che specifica se il msg è ricevuto o spedito
-            message.find('.msg-text').text(text); // aggiungo il testo del messaggio
-            message.find('.msg-time').text(time); // aggiungo l'ora
+            // passo alla funzione creata da HANDLEBARS, l'oggetto chat su cui sto lavorando,
+            // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
+            message = messageFunction(chat[j]);
 
-            // appendo il messaggio che ho ricostruito alla chat che sto costruendo, l'ultima inserita in conversation
+            // appendo il messaggio che ho costruito nlla conversazione che sto costruendo, l'ultima inserita in conversation
             $('.conversations .conversation:last-child').append(message);
 
-        } // fine ciclo scansione messaggi della chat
+        } // fine ciclo scansione messaggi della singola conversazione
 
-    } // fine ciclo scansione contatti
+    } // fine ciclo scansione di tutte le conversazioni
 
     // setto come "attiva" la 1a conversazione che ho caricato dal DB
     $('.conversation').first().addClass('c-active');

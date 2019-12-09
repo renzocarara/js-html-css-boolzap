@@ -160,8 +160,24 @@
     <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
 
     <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
+    <script id="template-msg-wrapper" type="text/x-handlebars-template">
+        {{!-- template per la creazione dei singoli messaggi di una conversazione --}}
+        <div class="msg-wrapper {{ msgFlow }}">
+            <p class="msg-text">{{ msgText }}</p>
+            <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+            <span class="msg-time">{{ msgTime }}</span>
+            <div class="msg-dropdown no-show">
+                <ul>
+                    <li>Message info</li>
+                    <li>Delete message</li>
+                </ul>
+            </div>
+        </div>
+    </script>
+
     <script id="template-conversation" type="text/x-handlebars-template">
-        <div class="conversation" data-contact="{{contact}}"></div>
+        {{!-- template per la creazione di una conversazione --}}
+        <div class="conversation" data-contact="{{ contact }}"></div>
     </script>
     <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
 
