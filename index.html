@@ -39,8 +39,8 @@
                     <input id="search-input" type="text" placeholder="Cerca o inizia una nuova chat">
                 </div>
 
+                <!-- qui vanno inseriti i contatti costruiti dinamicamente da JS -->
                 <div id="contacts-panel">
-                    <!-- qui vanno inseriti i contatti costruiti dinamicamente da JS -->
                 </div>
             </div>
 
@@ -56,8 +56,8 @@
                     <i class="fas fa-search"></i>
                 </div>
 
+                <!-- qui vanno inserite le chat costruite dinamicamente da JS -->
                 <div class="conversations">
-                    <!-- qui vanno inserite le chat costruite dinamicamente da JS -->
                 </div>
 
                 <div id="send-msg-bar">
@@ -97,7 +97,7 @@
         <div class="contact box">
             <div class="img-box"><img src="images/{{ contact }}.png" alt="user image"></div>
             <div class="text-box">
-                <span class="contact-name">{{contact}}</span>
+                <span class="contact-name">{{ contact }}</span>
                 <span>{{ msgText }}</span></div>
             <div class="date-box">{{ msgTime }}</div>
         </div>

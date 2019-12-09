@@ -45,13 +45,13 @@ var boolzappDB = [
 
         'chat': [{
                 'msgFlow': 'msg-mine',
-                'msgText': 'Ciao Francesca, come stai',
+                'msgText': 'Ciao Francesca, come stai? Hai poi scritto il DB, oppure hai rinunciato?',
                 'msgTime': '10:50'
             },
 
             {
                 'msgFlow': 'msg-speaker',
-                'msgText': 'Molto bene, grazie',
+                'msgText': 'Certo, è una bomaba',
                 'msgTime': '10:51'
             },
 
@@ -68,7 +68,7 @@ var boolzappDB = [
 
         'chat': [{
                 'msgFlow': 'msg-mine',
-                'msgText': 'Ciao Antonio, come va',
+                'msgText': 'Ciao Antonio, come va? Mi racconti come funziona il Javascript?',
                 'msgTime': '10:45'
             },
 
@@ -119,7 +119,7 @@ var boolzappDB = [
 
         'chat': [{
                 'msgFlow': 'msg-mine',
-                'msgText': 'Franco dove sei finito?',
+                'msgText': 'Franco dove sei finito? Non riesco più a contattarti, fatti sentire',
                 'msgTime': '10:45'
             },
 
@@ -394,25 +394,28 @@ function capitalizeFirstLetter(string) {
 
 
 function createContacts() {
-
-    // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemnto è un contatto)
+    var maxTextLen = 35; // massima lunghezza del testo visualizzabile
+    // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemento è un contatto)
     for (var i = 0; i < boolzappDB.length; i++) {
 
-        // estraggo il nome contatto corrente
-        var contact = boolzappDB[i].contact;
-
+        // estraggo il nome contatto corrente e gli metto la maiuscola iniziale
+        var contact = capitalizeFirstLetter(boolzappDB[i].contact);
         // estraggo il primo messaggio della conversazione corrente
         // ogni primo messaggio di ogni conversazione, contiene tutte le info che mi servono
         var chat = boolzappDB[i].chat[0];
+        var msgText = chat.msgText; // estraggo il testo
 
+        // se il testo è troppo lungo per essere visualizzata, lo tronco
+        if (chat.msgText.length > maxTextLen) {
+            msgText = chat.msgText.slice(0, maxTextLen).concat("...");
+        }
         // creo un oggetto con tutti i dati che mi servono
         contatctInfo = {
-            'contact': capitalizeFirstLetter(contact),
-            'msgText': chat.msgText,
+            'contact': contact,
+            'msgText': msgText,
             'msgTime': chat.msgTime
         };
 
-        console.log("contatctInfo n." + i + " : ", contatctInfo);
         // recupero il codice html dal template HANDLEBARS
         var contactTemplate = $('#template-contact').html();
 
@@ -423,7 +426,6 @@ function createContacts() {
         // della variabile che passo alla funzione, passo un oggetto, che contiene tutte le info del contatto che sto creando
         contact = contactFunction(contatctInfo);
 
-        console.log("contact da appendere:", contact);
         // inserisco il contatto sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
         $('#contacts-panel').append(contact);
 
