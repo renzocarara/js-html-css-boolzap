@@ -421,7 +421,7 @@ function createContacts() {
         // recupero il codice html dal template HANDLEBARS
         var contactTemplate = $('#template-contact').html();
 
-        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce una funzione
         var contactFunction = Handlebars.compile(contactTemplate);
 
         // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
