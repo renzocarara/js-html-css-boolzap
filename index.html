@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
     <title>Boolzapp</title>
 </head>
 
@@ -124,7 +126,7 @@
         </div>
     </div>
 
-    <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
+    <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
     <!-- template per la creazione dei singoli messaggi di una conversazione  -->
     <div class="template msg-wrapper">
         <p class="msg-text">testo chat</p>
@@ -138,11 +140,31 @@
         </div>
     </div>
 
+
+    <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
+    <!-- template per la creazione dei singoli messaggi di una conversazione  -->
+    <!-- <div class="template msg-wrapper">
+        <p class="msg-text">testo chat</p>
+        <span class="angle-down hidden"><i class="fas fa-angle-down"></i></span>
+        <span class="msg-time">hh:mm</span>
+        <div class="msg-dropdown no-show">
+            <ul>
+                <li>Message info</li>
+                <li>Delete message</li>
+            </ul>
+        </div>
+    </div> -->
+
     <!-- template per la creazione di una conversazione -->
-    <div class="template conversation" data-contact="contact-name"></div>
+    <!-- <div class="template conversation" data-contact="contact-name"></div> -->
     <!-- +++++++++++++++++++++++++++++ TEMPLATEs +++++++++++++++++++++++++++ -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
+    <script id="template-conversation" type="text/x-handlebars-template">
+        <div class="conversation" data-contact="{{contact}}"></div>
+    </script>
+    <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
+
     <script src="main.js"></script>
 </body>
 

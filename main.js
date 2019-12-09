@@ -377,11 +377,22 @@ function createChats() {
         // estraggo tutta la chat corrente
         var chat = boolzappDB[i].chat;
 
-        // clono un elemento 'conversation' che rappresenta una chat
-        var conversation = $('.conversation.template').clone(true, true).removeClass('template');
+        // recupero il codice html dal template HANDLEBARS
+        var conversation = $('#template-conversation').html();
 
-        // inizio a valorizzare il clone col valore estratto dal DB
-        conversation.attr('data-contact', contact); // aggiungo l'attributo data-contact
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        var conversationFunction = Handlebars.compile(conversation);
+
+        // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
+        // della variabile che passo alla funzione, passo un oggetto, che rappresenta la conversazione corrente
+        // la variabile è un oggetto che al suo interno ha una chiave che identifica il "placeholder" da sostituire
+        conversation = conversationFunction(boolzappDB[i]);
+
+        // inserisco la conversazione sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
+        // nel ciclo for che segue andrò a scrivere all'interno di questo elemento tutti i singoli messaggi della conversazione
+        // inserisco la singola conversazione sulla pagina HTML all'interno del contenitore 'conversations'
+        // (da non confondersi con 'conversation' che rappresenta una singola chat)
+        $('.conversations').append(conversation);
 
         // scorro i messaggi della chat accoppiata al contatto corrente
         for (var j = 0; j < chat.length; j++) {
@@ -399,14 +410,10 @@ function createChats() {
             message.find('.msg-text').text(text); // aggiungo il testo del messaggio
             message.find('.msg-time').text(time); // aggiungo l'ora
 
-            // appendo il messaggio che ho ricostruito alla chat che sto costruendo
-            conversation.append(message);
+            // appendo il messaggio che ho ricostruito alla chat che sto costruendo, l'ultima inserita in conversation
+            $('.conversations .conversation:last-child').append(message);
 
         } // fine ciclo scansione messaggi della chat
-
-        // scrivo la singola conversazione sulla pagina HTML all'interno del contenitore 'conversations'
-        // (da non confondersi con 'conversation' che rappresenta una singola chat)
-        $('.conversations').append(conversation);
 
     } // fine ciclo scansione contatti
 
