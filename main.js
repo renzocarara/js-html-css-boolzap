@@ -260,31 +260,31 @@ $(document).ready(function() {
     // MILESTONE3 - PUNTO 2
 
     // gestisco evento mouseenter sui messaggi visualizzati
-    $('.msg-wrapper').mouseenter(function() {
+    $(document).on('mouseenter', '.msg-wrapper', function() {
         // quando l'utente posiziona il mouse all'interno del messaggio,
         // visualizzo un simbolino che dà accesso ad un dropdown menu
         $(this).find('.angle-down').removeClass('hidden');
     });
 
     // gestisco evento mouseleave sui messaggi visualizzati
-    $('.msg-wrapper').mouseleave(function() {
+    $(document).on('mouseleave', '.msg-wrapper', function() {
         // quando l'utente sposta il mouse all'esterno del messaggio,
         // nascondo il simbolino che dà accesso al dropdown menu
         $(this).find('.angle-down').addClass('hidden');
     });
 
     // gestisco click su icona per dropdown menu
-    $('.angle-down').click(function() {
+    $(document).on('click', '.angle-down', function() {
         // quando l'utente clicca sull'iconcina del dropdown menu,
         // visualizzo il dropdown menu
         $(this).nextAll('.msg-dropdown').toggleClass('no-show');
     });
 
     // gestisco click su voce menu "Delete message"
-    $('.msg-dropdown ul li:last-child').click(function() {
+    $(document).on('click', '.msg-dropdown ul li:last-child', function() {
         // rimuovo (cancello definitivamente l'elemento HTML)
         // il messaggio associato al dropdown menu cliccato
-        // partendo dall'elemnto cliccato (this) scorro verso l'alto il DOM,
+        // partendo dall'elemento cliccato (this) scorro verso l'alto il DOM,
         // cercando il primo ANCESTOR di classe "msg-wrapper"
         $(this).closest('.msg-wrapper').remove();
     });
@@ -309,19 +309,28 @@ function sendMsg() {
 
     // procedo solo se l'utente ha inserito del testo nel campo di input
     if (messageToSend) {
-        // clono un elemento template e rimuovo la classe template
-        // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
-        // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
-        var HTMLnewElement = $('.template.msg-wrapper').clone(true, true).removeClass('template');
-        var currentTime = catchTime();
 
-        // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
-        $(HTMLnewElement).addClass('msg-mine'); // stilo il messaggio come messaggio inviato (allineato a dx con sfondo verde)
-        $(HTMLnewElement).children('.msg-text').text(messageToSend); // inserisco testo digitato
-        $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
+        var currentTime = catchTime(); // orario corrente
 
-        // faccio una append del nuovo elemento all'interno della conversazione
-        $('.conversation.c-active').append(HTMLnewElement);
+        // creo un oggetto con i dati da inserire nel messaggio
+        var newMsg = {
+            'msgFlow': 'msg-mine',
+            'msgText': messageToSend,
+            'msgTime': currentTime
+        };
+
+        // recupero il codice html dal template HANDLEBARS
+        var message = $('#template-msg-wrapper').html();
+
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        var messageFunction = Handlebars.compile(message);
+
+        // passo alla funzione creata da HANDLEBARS, l'oggetto che contiene i valori che andranno a sostituire i placeholder,
+        // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
+        message = messageFunction(newMsg);
+
+        // faccio una append del nuovo elemento all'interno della conversazione attiva in questo momento
+        $('.conversation.c-active').append(message);
 
         //resetto il campo di input inserendo una stringa vuota
         $('#send-msg-bar input').val("");
@@ -342,19 +351,29 @@ function showAnswer() {
     // creo e visualizzo una risposta simulata
 
     setTimeout(function() {
-        // clono un elemento template e rimuovo la classe template
-        // passando 2 parametri a "true" alla clone() permetto che gli event handler e i dati legati all'elemnto
-        // che vado a clonare siano copiati anche sull'elemento clonato (con il primo true) e i suoi figli (con il secondo true)
-        var HTMLnewElement = $('.template.msg-wrapper').clone(true, true).removeClass('template');
-        var currentTime = catchTime();
 
-        // valorizzo l'elemento HTML da aggiungere nel contenitore conversazioni
-        $(HTMLnewElement).addClass('msg-speaker'); // stilo il messaggio come messaggio ricevuto (allineato a sx e con sfondo bianco)
-        $(HTMLnewElement).children('.msg-text').text("Ricevuto, OK!"); // inserisco testo fittizio
-        $(HTMLnewElement).children('.msg-time').text(currentTime); // inserisco ora corrente hh:mm
+        var fakeAnswer = "Ricevuto, OK!"; // testo fittizio per la risposta simulata
+        var currentTime = catchTime(); // ora corrente
+
+        // creo un oggetto con i dati da inserire nel messaggio
+        var newMsg = {
+            'msgFlow': 'msg-speaker',
+            'msgText': fakeAnswer,
+            'msgTime': currentTime
+        };
+
+        // recupero il codice html dal template HANDLEBARS
+        var message = $('#template-msg-wrapper').html();
+
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        var messageFunction = Handlebars.compile(message);
+
+        // passo alla funzione creata da HANDLEBARS, l'oggetto che contiene i valori che andranno a sostituire i placeholder,
+        // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
+        message = messageFunction(newMsg);
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
-        $('.conversation.c-active').append(HTMLnewElement);
+        $('.conversation.c-active').append(message);
     }, 1000);
 } // end function showAnswer()
 
