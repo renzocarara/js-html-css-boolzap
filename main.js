@@ -156,6 +156,9 @@ $(document).ready(function() {
     // presente in questo script, creo il codice HTML e scrivo sulla pagina
     createChats();
 
+    // creo l'elenco dei contatti presenti, leggendoli dal boolzappDB
+    createContacts();
+
     // MILESTONE1 - PUNTO 2
 
     // catturo click sull'icona di invio messaggio
@@ -384,6 +387,45 @@ function catchTime() {
     return (date.getHours() + ":" + date.getMinutes());
 }
 
+function createContacts() {
+
+    // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemnto è un contatto)
+    for (var i = 0; i < boolzappDB.length; i++) {
+
+        // estraggo il nome contatto corrente
+        var contact = boolzappDB[i].contact;
+
+        // estraggo il primo messaggio della conversazione corrente
+        // ogni primo messaggio di ogni conversazione, contiene tutte le info che mi servono
+        var chat = boolzappDB[i].chat[0];
+
+        // creo un oggetto con tutti i dati che mi servono
+        contatctInfo = {
+            'contact': contact,
+            'msgText': chat.msgText,
+            'msgTime': chat.msgTime
+        };
+
+        console.log("contatctInfo n." + i + " : ", contatctInfo);
+        // recupero il codice html dal template HANDLEBARS
+        var contactTemplate = $('#template-contact').html();
+
+        // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
+        var contactFunction = Handlebars.compile(contactTemplate);
+
+        // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
+        // della variabile che passo alla funzione, passo un oggetto, che contiene tutte le info del contatto che sto creando
+        contact = contactFunction(contatctInfo);
+
+        console.log("contact da appendere:", contact);
+        // inserisco il contatto sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
+        $('#contacts-panel').append(contact);
+
+    } // fine ciclo scansione del DB
+
+    // setto come "attivo" il primo contatto che ho caricato dal DB
+    $('.contact').first().addClass('contact-active');
+}
 
 function createChats() {
 

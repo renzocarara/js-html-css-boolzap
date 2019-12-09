@@ -40,63 +40,7 @@
                 </div>
 
                 <div id="contacts-panel">
-
-                    <div class="contact box contact-active">
-                        <div class="img-box"><img src="images/michele.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Michele</span>
-                            <span>Ciao io sono Michele.</span></div>
-                        <div class="date-box">12:30</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/francesca.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Francesca</span>
-                            <span>Ciao Francesca, come stai?</span></div>
-                        <div class="date-box">12:30</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/antonio.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Antonio</span>
-                            <span>Ciao Antonio, come stai?</span></div>
-                        <div class="date-box">12:30</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/mario.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Mario</span>
-                            <span>Hello Mario, come stai?</span></div>
-                        <div class="date-box">12:30</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/marco.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Marco</span>
-                            <span>Ciao Marco ci vediamo?</span></div>
-                        <div class="date-box">10:45</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/franco.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Franco</span>
-                            <span>Franco dove sei finito?</span></div>
-                        <div class="date-box">11:30</div>
-                    </div>
-
-                    <div class="contact box">
-                        <div class="img-box"><img src="images/milena.png" alt="user image"></div>
-                        <div class="text-box">
-                            <span class="contact-name">Milena</span>
-                            <span></span>Milena mi aiuti?</div>
-                        <div class="date-box">8:46</div>
-                    </div>
-
+                    <!-- qui vanno inseriti i contatti costruiti dinamicamente da JS -->
                 </div>
             </div>
 
@@ -146,6 +90,20 @@
         {{!-- template per la creazione di una conversazione --}}
         <div class="conversation" data-contact="{{ contact }}"></div>
     </script>
+
+
+    <script id="template-contact" type="text/x-handlebars-template">
+        {{!-- template per la creazione di un singolo contatto --}}
+        <div class="contact box">
+            <div class="img-box"><img src="images/{{ contact }}.png" alt="user image"></div>
+            <div class="text-box">
+                <span class="contact-name">{{contact}}</span>
+                <span>{{ msgText }}</span></div>
+            <div class="date-box">{{ msgTime }}</div>
+        </div>
+    </script>
+
+
     <!-- ++++++++++++++++++ HANDLEBARS TEMPLATEs +++++++++++++++++++++++++++ -->
 
     <script src="main.js"></script>
