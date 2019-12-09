@@ -412,7 +412,7 @@ function createContacts() {
             msgText = chat.msgText.slice(0, maxTextLen).concat("...");
         }
         // creo un oggetto con tutti i dati che mi servono
-        contactInfo = {
+        var contactInfo = {
             'contact': contact,
             'msgText': msgText,
             'msgTime': chat.msgTime
