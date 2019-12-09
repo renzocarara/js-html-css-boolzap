@@ -387,6 +387,12 @@ function catchTime() {
     return (date.getHours() + ":" + date.getMinutes());
 }
 
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 function createContacts() {
 
     // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemnto è un contatto)
@@ -401,7 +407,7 @@ function createContacts() {
 
         // creo un oggetto con tutti i dati che mi servono
         contatctInfo = {
-            'contact': contact,
+            'contact': capitalizeFirstLetter(contact),
             'msgText': chat.msgText,
             'msgTime': chat.msgTime
         };
