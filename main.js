@@ -397,11 +397,17 @@ function capitalizeFirstLetter(string) {
 function createContacts() {
     var maxTextLen = 35; // massima lunghezza del testo visualizzabile
 
+    // HANDLEBARS helper, definisco una funzioncina (capitalize) che poi richiamo dal file .html, all'interno dello script HANDLEBARS
+    Handlebars.registerHelper('capitalize', function(string) {
+        // funzione che, data una stringa, ritorna la stringa stessa con la prima lettera in maiuscolo
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    });
+
     // ciclo su tutto il DB e scorro tutti gli elementi (ogni elemento è un contatto)
     for (var i = 0; i < boolzappDB.length; i++) {
 
-        // estraggo il nome contatto corrente e gli metto la maiuscola iniziale
-        var contact = capitalizeFirstLetter(boolzappDB[i].contact);
+        // estraggo il nome contatto corrente
+        var contact = (boolzappDB[i].contact);
         // estraggo il primo messaggio della conversazione corrente
         // ogni primo messaggio di ogni conversazione, contiene tutte le info che mi servono
         var chat = boolzappDB[i].chat[0];

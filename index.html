@@ -91,13 +91,12 @@
         <div class="conversation" data-contact="{{ contact }}"></div>
     </script>
 
-
     <script id="template-contact" type="text/x-handlebars-template">
         {{!-- template per la creazione di un singolo contatto --}}
         <div class="contact box">
             <div class="img-box"><img src="images/{{ contact }}.png" alt="user image"></div>
             <div class="text-box">
-                <span class="contact-name">{{ contact }}</span>
+                <span class="contact-name">{{ capitalize contact }}</span>
                 <span>{{ msgText }}</span></div>
             <div class="date-box">{{ msgTime }}</div>
         </div>
