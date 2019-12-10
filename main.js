@@ -51,7 +51,7 @@ var boolzappDB = [
 
             {
                 'msgFlow': 'msg-speaker',
-                'msgText': 'Certo, è una bomaba',
+                'msgText': 'Certo, è una bomba',
                 'msgTime': '10:51'
             },
 
@@ -323,14 +323,14 @@ function sendMsg() {
         };
 
         // recupero il codice html dal template HANDLEBARS
-        var message = $('#template-msg-wrapper').html();
+        var messageTemplate = $('#template-msg-wrapper').html();
 
         // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
-        var messageFunction = Handlebars.compile(message);
+        var messageFunction = Handlebars.compile(messageTemplate);
 
         // passo alla funzione creata da HANDLEBARS, l'oggetto che contiene i valori che andranno a sostituire i placeholder,
         // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
-        message = messageFunction(newMsg);
+        var message = messageFunction(newMsg);
 
         // faccio una append del nuovo elemento all'interno della conversazione attiva in questo momento
         $('.conversation.c-active').append(message);
@@ -366,14 +366,14 @@ function showAnswer() {
         };
 
         // recupero il codice html dal template HANDLEBARS
-        var message = $('#template-msg-wrapper').html();
+        var messageTemplate = $('#template-msg-wrapper').html();
 
         // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
-        var messageFunction = Handlebars.compile(message);
+        var messageFunction = Handlebars.compile(messageTemplate);
 
         // passo alla funzione creata da HANDLEBARS, l'oggetto che contiene i valori che andranno a sostituire i placeholder,
         // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
-        message = messageFunction(newMsg);
+        var message = messageFunction(newMsg);
 
         // faccio una append del nuovo elemento all'interno del contenitore delle conversazioni
         $('.conversation.c-active').append(message);
@@ -456,15 +456,15 @@ function createChats() {
         var chat = boolzappDB[i].chat;
 
         // recupero il codice html dal template HANDLEBARS
-        var conversation = $('#template-conversation').html();
+        var conversationTemplate = $('#template-conversation').html();
 
         // do in pasto a HANDLEBARS il codice html, lui mi restituisce una funzione
-        var conversationFunction = Handlebars.compile(conversation);
+        var conversationFunction = Handlebars.compile(conversationTemplate);
 
         // uso la funzione generata da HANDLEBARS, creo l'html in cui i vari placeholder vengono sostituiti con il contenuto
         // della variabile che passo alla funzione, passo un oggetto, che rappresenta la conversazione corrente
         // la variabile è un oggetto che al suo interno ha una chiave che identifica il "placeholder" da sostituire
-        conversation = conversationFunction(boolzappDB[i]);
+        var conversation = conversationFunction(boolzappDB[i]);
 
         // inserisco la conversazione sulla pagina con il codice HTML che ho appena generato dal template HANDLEBARS
         // nel ciclo for che segue andrò a scrivere all'interno di questo elemento tutti i singoli messaggi della conversazione
@@ -476,14 +476,14 @@ function createChats() {
         for (var j = 0; j < chat.length; j++) {
 
             // recupero il codice html dal template HANDLEBARS
-            var message = $('#template-msg-wrapper').html();
+            var messageTemplate = $('#template-msg-wrapper').html();
 
             // do in pasto a HANDLEBARS il codice html, lui mi restituisce un funzione
-            var messageFunction = Handlebars.compile(message);
+            var messageFunction = Handlebars.compile(messageTemplate);
 
             // passo alla funzione creata da HANDLEBARS, l'oggetto chat su cui sto lavorando,
             // la funzione mi estrae i dati necessari per sostituire i placeholder contenuti nel template
-            message = messageFunction(chat[j]);
+            var message = messageFunction(chat[j]);
 
             // appendo il messaggio che ho costruito nlla conversazione che sto costruendo, l'ultima inserita in conversation
             $('.conversations .conversation:last-child').append(message);
