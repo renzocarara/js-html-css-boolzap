@@ -36,6 +36,7 @@ input:focus {
 
 /* contenitore dei contenuti!;) */
 #content {
+    display: flex;
     background-color: #ededed;
     height: 96vh;
     width: 74vw;

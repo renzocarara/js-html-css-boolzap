@@ -384,7 +384,7 @@ function showAnswer() {
 function catchTime() {
     // ritorna l'ora corrente nel formato hh:mm
     var date = new Date();
-    return (date.getHours() + ":" + date.getMinutes());
+    return (date.getHours() + ":" + (date.getMinutes() > 9 ? date.getMinutes() : ('0' + date.getMinutes())));
 }
 
 
