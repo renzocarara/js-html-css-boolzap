@@ -45,7 +45,7 @@ input:focus {
 
 /* colonna sinistra di 'content' */
 #left-side {
-    width: 30%;
+    width: 40%;
     min-width: 340px;
     float: left;
     height: 100%;
@@ -54,7 +54,7 @@ input:focus {
 
 /* colonna destra di 'content' */
 #right-side {
-    width: 70%;
+    width: 60%;
     float: left;
     height: 100%;
     max-height: 96vh;
@@ -190,11 +190,11 @@ input:focus {
 
 /* icona accanto campo input della barra di ricerca */
 #search-icon {
+    width: 25%;
     position: relative;
     left: 5px;
     background-color: white;
     color: gray;
-    width: 8%;
     border-top-left-radius: 50px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
@@ -205,7 +205,7 @@ input:focus {
 
 /* campo input della barra di ricerca */
 #search-bar input {
-    width: 88%;
+    width: 75%;
     border: none;
     border-top-left-radius: 0;
     border-top-right-radius: 50px;
@@ -353,4 +353,14 @@ input:focus {
 
 .msg-dropdown ul li:hover {
     background-color: #f5f5f5;
+}
+
+@media screen and (max-width: 1170px) {
+    .img-box .fa-bell-slash {
+        display: none;
+    }
+
+    #last-access {
+        display: none;
+    }
 }
